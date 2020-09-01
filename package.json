@@ -1,0 +1,19 @@
+{
+  "name": "slide_share",
+  "version": "1.0.0",
+  "description": "server implementation of the slide share functionality inside UE4",
+  "main": "picture_server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "https": "^1.0.0",
+    "nodemon": "^2.0.4",
+    "websocket": "^1.0.31"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RCP",
+  "license": "ISC"
+}
