@@ -30,7 +30,12 @@ app.use(express.static(path.join(__dirname, 'www')));
 //receive image thru post request
 app.post('/', (req, res) => {
   console.log('image size ' + req.body.picture.length);
-  io.emit('image', req.body.picture); //replicate using emit 'image'
+  console.log('session_id:' + req.body.session_id);
+  console.log('display_id:' + req.body.display_id);
+  var data_to_send = {};
+  data_to_send['display_id'] = req.body.display_id;
+  data_to_send['image'] = req.body.picture;
+  io.emit('image' + req.body.session_id, JSON.stringify(data_to_send)); //replicate using emit 'image'
 
   res.status(200).send({
     success: true,
