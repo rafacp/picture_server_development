@@ -27,8 +27,21 @@ app.get('/', (req,res) => {
 
 app.use(express.static(path.join(__dirname, 'www')));
 
+//kill gamelift server path
+app.post('/disconnect', (req, res) => {
+  console.log('session_id:' + req.body.session_id);
+  var data_to_send = {};
+  data_to_send['session_id'] = req.body.session_id;
+  io.emit('kill_gamelift_server' + req.body.session_id, JSON.stringify(data_to_send)); //replicate using emit 'disconnect'
+  
+  res.status(200).send({
+    success: true,
+    data: '/ POST OK'
+  });
+});
+
 //receive image thru post request
-app.post('/', (req, res) => {
+app.post('/image', (req, res) => {
   console.log('image size ' + req.body.picture.length);
   console.log('session_id:' + req.body.session_id);
   console.log('display_id:' + req.body.display_id);
