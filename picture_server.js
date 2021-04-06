@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'www')));
 
 //kill gamelift server path
 app.post('/disconnect', (req, res) => {
-  console.log('session_id:' + req.body.session_id);
+  console.log('trying to disconnect session_id:' + req.body.session_id);
   var data_to_send = {};
   data_to_send['session_id'] = req.body.session_id;
   io.emit('kill_gamelift_server' + req.body.session_id, JSON.stringify(data_to_send)); //replicate using emit 'disconnect'
